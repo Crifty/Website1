@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Career Quiz - CareerPath</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Career Preference Assessment</h1>
+    <p>Answer honestly to get the most accurate career suggestions</p>
+</header>
+
+<section class="quiz-section">
+    <div class="container">
+
+        <form id="quizForm">
+
+            <label>1. Preferred Work Environment</label>
+            <p class="hint">
+                Some careers involve working indoors (offices, labs, studios), while others require
+                outdoor or field-based work. Choose what feels comfortable for you.
+            </p>
+            <select id="workMode" required>
+                <option value="">Select</option>
+                <option value="Indoor">Indoor</option>
+                <option value="Outdoor">Outdoor</option>
+            </select>
+
+            <label>2. Preferred Work Style</label>
+            <p class="hint">
+                Consider whether you enjoy working independently or collaborating frequently with others.
+            </p>
+            <select id="workStyle" required>
+                <option value="">Select</option>
+                <option value="Solo">Solo</option>
+                <option value="Group">Group</option>
+            </select>
+
+            <label>3. Areas of Interest</label>
+            <p class="hint">
+                Select the fields that genuinely interest you. You may choose multiple options.
+                Your interests play a key role in career satisfaction.
+            </p>
+
+            <div class="checkboxes">
+                <label><input type="checkbox" name="interests" value="Technology"> Technology & Computers</label>
+                <label><input type="checkbox" name="interests" value="Art"> Art & Creativity</label>
+                <label><input type="checkbox" name="interests" value="Science"> Science & Research</label>
+                <label><input type="checkbox" name="interests" value="Business"> Business & Management</label>
+                <label><input type="checkbox" name="interests" value="Health"> Health & Wellness</label>
+                <label><input type="checkbox" name="interests" value="Education"> Teaching & Education</label>
+                <label><input type="checkbox" name="interests" value="Sports"> Sports & Fitness</label>
+                <label><input type="checkbox" name="interests" value="Environment"> Environment & Nature</label>
+                <label><input type="checkbox" name="interests" value="Law"> Law & Public Service</label>
+                <label><input type="checkbox" name="interests" value="Media"> Media & Communication</label>
+            </div>
+
+            <button type="submit" class="btn">View Career Recommendations</button>
+
+        </form>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 CareerPath. Career clarity starts with self-awareness.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
