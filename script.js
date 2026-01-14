@@ -4,110 +4,110 @@ const careerBuckets = {
     "Indoor-Solo": [
         {
             name: "Software Developer",
+            interests: ["Technology"],
             introSalary: "₹5–8 LPA",
             experiencedSalary: "₹15–30+ LPA",
-            interests: ["Technology"],
-            info: "Software Developers design and build applications, websites, and systems. The role requires logical thinking, coding skills, and continuous learning. Most work is independent and computer-based."
+            info: "Software Developers design and build applications, websites, and systems. The work is independent, logical, and computer-based."
         },
         {
             name: "Data Analyst",
+            interests: ["Technology", "Science", "Business"],
             introSalary: "₹4–7 LPA",
             experiencedSalary: "₹12–20 LPA",
-            interests: ["Technology", "Science", "Business"],
-            info: "Data Analysts study data to find patterns and insights that help businesses make decisions. The work involves statistics, tools like Excel or Python, and focused analytical thinking."
+            info: "Data Analysts interpret data to find trends and insights. This role requires analytical thinking and strong problem-solving skills."
         },
         {
             name: "Graphic Designer",
+            interests: ["Art", "Media"],
             introSalary: "₹3–5 LPA",
             experiencedSalary: "₹8–15 LPA",
-            interests: ["Art", "Media"],
-            info: "Graphic Designers create visual content such as logos, posters, and social media designs. This career suits creative individuals who enjoy independent work and design tools."
+            info: "Graphic Designers create visual content such as logos, posters, and digital designs using creative tools."
         },
         {
             name: "Content Writer",
+            interests: ["Media", "Art"],
             introSalary: "₹3–5 LPA",
             experiencedSalary: "₹8–12 LPA",
-            interests: ["Media", "Art"],
-            info: "Content Writers create articles, blogs, and marketing material. This role focuses on research, creativity, and strong language skills."
+            info: "Content Writers create blogs, articles, and marketing material. The work involves creativity, research, and writing skills."
         }
     ],
 
     "Indoor-Group": [
         {
             name: "Teacher / Professor",
+            interests: ["Education", "Science", "Art"],
             introSalary: "₹2–4 LPA",
             experiencedSalary: "₹6–12+ LPA",
-            interests: ["Education", "Science", "Art"],
-            info: "Teachers educate students in classrooms or institutions. The role involves communication, teamwork, and guiding learners academically and personally."
+            info: "Teachers educate and mentor students in classrooms. The role involves communication, teamwork, and subject expertise."
         },
         {
             name: "Product Manager",
+            interests: ["Business", "Technology"],
             introSalary: "₹6–10 LPA",
             experiencedSalary: "₹20–35 LPA",
-            interests: ["Business", "Technology"],
-            info: "Product Managers coordinate between technical teams, designers, and business stakeholders. They plan product strategy and ensure successful delivery."
+            info: "Product Managers coordinate between technical and business teams to build successful products."
         },
         {
             name: "HR Manager",
+            interests: ["Business"],
             introSalary: "₹4–6 LPA",
             experiencedSalary: "₹10–18 LPA",
-            interests: ["Business"],
-            info: "HR Managers handle recruitment, employee relations, and workplace culture. This role requires communication, leadership, and people management."
+            info: "HR Managers handle recruitment, employee relations, and organizational culture."
         },
         {
             name: "Marketing Manager",
+            interests: ["Business", "Media"],
             introSalary: "₹5–8 LPA",
             experiencedSalary: "₹15–25 LPA",
-            interests: ["Business", "Media"],
-            info: "Marketing Managers plan campaigns and brand strategies. The role involves teamwork, creativity, and market analysis."
+            info: "Marketing Managers plan and execute branding and promotional campaigns with cross-functional teams."
         }
     ],
 
     "Outdoor-Solo": [
         {
             name: "Fitness Trainer",
+            interests: ["Sports", "Health"],
             introSalary: "₹2–4 LPA",
             experiencedSalary: "₹6–10+ LPA",
-            interests: ["Sports", "Health"],
-            info: "Fitness Trainers help individuals achieve physical fitness goals. The job involves personal training, discipline, and health knowledge."
+            info: "Fitness Trainers guide individuals to improve physical health through training and discipline."
         },
         {
             name: "Photographer",
+            interests: ["Art", "Media"],
             introSalary: "₹3–5 LPA",
             experiencedSalary: "₹10–20 LPA",
-            interests: ["Art", "Media"],
-            info: "Photographers capture images for events, nature, or media. The career suits independent and creative individuals who enjoy outdoor work."
+            info: "Photographers capture images for events, travel, or media projects, often working independently outdoors."
         },
         {
             name: "Field Surveyor",
+            interests: ["Environment", "Science"],
             introSalary: "₹3–5 LPA",
             experiencedSalary: "₹8–12 LPA",
-            interests: ["Environment", "Science"],
-            info: "Field Surveyors collect land and environmental data. The work is location-based and requires accuracy and technical tools."
+            info: "Field Surveyors collect land and environmental data using technical tools in outdoor settings."
         }
     ],
 
     "Outdoor-Group": [
         {
             name: "Civil Engineer",
+            interests: ["Technology", "Environment"],
             introSalary: "₹4–6 LPA",
             experiencedSalary: "₹12–25 LPA",
-            interests: ["Technology", "Environment"],
-            info: "Civil Engineers manage construction projects such as roads and buildings. The job involves site work, teamwork, and technical planning."
+            info: "Civil Engineers manage construction projects such as roads and buildings, working with on-site teams."
         },
         {
             name: "Environmental Scientist",
+            interests: ["Environment", "Science"],
             introSalary: "₹4–6 LPA",
             experiencedSalary: "₹10–18 LPA",
-            interests: ["Environment", "Science"],
-            info: "Environmental Scientists work on solving environmental problems. They collaborate with teams in field and research-based roles."
+            info: "Environmental Scientists work with teams to address pollution, sustainability, and climate issues."
         },
         {
             name: "Sports Coach",
+            interests: ["Sports", "Health"],
             introSalary: "₹3–5 LPA",
             experiencedSalary: "₹8–15 LPA",
-            interests: ["Sports", "Health"],
-            info: "Sports Coaches train teams and athletes. This role involves leadership, teamwork, and outdoor physical activity."
+            info: "Sports Coaches train athletes and teams, focusing on performance, strategy, and discipline."
         }
     ]
 };
@@ -132,7 +132,7 @@ if (document.getElementById("quizForm")) {
     });
 }
 
-/* ================= RESULTS DISPLAY ================= */
+/* ================= RESULTS LOGIC (NO REPEATS) ================= */
 
 if (document.getElementById("results")) {
     const workMode = localStorage.getItem("workMode");
@@ -140,24 +140,38 @@ if (document.getElementById("results")) {
     const interests = JSON.parse(localStorage.getItem("interests")) || [];
 
     const bucketKey = `${workMode}-${workStyle}`;
-    const bucketCareers = careerBuckets[bucketKey];
+    const bucket = careerBuckets[bucketKey];
 
-    // Score careers by interest overlap
-    const ranked = bucketCareers.map(career => {
-        let score = 0;
-        career.interests.forEach(i => {
-            if (interests.includes(i)) score++;
-        });
-        return { ...career, score };
+    const selectedCareers = [];
+    const usedNames = new Set();
+
+    // 1️⃣ Pick one career per interest
+    interests.forEach(interest => {
+        if (selectedCareers.length >= 3) return;
+
+        const match = bucket.find(c =>
+            c.interests.includes(interest) &&
+            !usedNames.has(c.name)
+        );
+
+        if (match) {
+            selectedCareers.push(match);
+            usedNames.add(match.name);
+        }
     });
 
-    ranked.sort((a, b) => b.score - a.score);
+    // 2️⃣ Fill remaining slots with fallback careers
+    bucket.forEach(c => {
+        if (selectedCareers.length < 3 && !usedNames.has(c.name)) {
+            selectedCareers.push(c);
+            usedNames.add(c.name);
+        }
+    });
 
-    const finalCareers = ranked.slice(0, 3); // ALWAYS 3
-
+    // 3️⃣ Display results
     const resultsDiv = document.getElementById("results");
 
-    finalCareers.forEach(c => {
+    selectedCareers.forEach(c => {
         const card = document.createElement("div");
         card.className = "career-card";
         card.innerHTML = `
